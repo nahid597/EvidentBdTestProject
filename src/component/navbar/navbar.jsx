@@ -45,6 +45,11 @@ const Navbar = () => {
                 Home
               </a>
             </li>
+            <li className="nav-item active">
+              <a className="nav-link text-primary" href="/search-data">
+                Data Search
+              </a>
+            </li>
             <li className="nav-item">
               <a className="nav-link text-primary" href="/signup">
                 Signup
@@ -52,7 +57,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item navbar-item-list-right">
               <a className="nav-link text-primary" href="/login">
-                Login
+                Sign in
               </a>
             </li>
           </ul>
