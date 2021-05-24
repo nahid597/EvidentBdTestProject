@@ -1,13 +1,36 @@
-import React, {useState} from "react";
+import { render } from "@testing-library/react";
+import React, { useState } from "react";
+import { Redirect } from 'react-router-dom';
+import authService from "../../service/authService";
 import "./signup.scss";
 
 const SignUp = () => {
-  const[signUpData, setSignUpData] = useState({});
+  const [signUpData, setSignUpData] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isRegister, setIsRegister] = useState(false);
 
-  const onSubmitSignUpData = (event) => {
+  const onSubmitSignUpData = async (event) => {
     event.preventDefault();
-    console.log(signUpData);
+    const response = await authService.register(signUpData);
+
+    setErrorMessage('');
+    setIsRegister(false);
+
+    const {data, error, success} = response;
+
+    if(!success) {
+      setErrorMessage(error);
+      return;
+    }
+
+    setErrorMessage('');
+    setIsRegister(true);    
+
   };
+
+  if(isRegister) {
+    return <Redirect to="/login" />
+  }
 
   const onChangeInputField = (event) => {
     event.preventDefault();
@@ -17,9 +40,9 @@ const SignUp = () => {
 
     setSignUpData({
       ...signUpData,
-      [name]: value
-    })
-  }
+      [name]: value,
+    });
+  };
 
   return (
     <>
@@ -27,13 +50,13 @@ const SignUp = () => {
         <div className="col-md-3"></div>
         <div className="col-md-6 sign-up-section">
           <form onSubmit={onSubmitSignUpData} autoComplete="off">
-            <h3 style={{textAlign: "center", marginTop: "10px"}}>Sign Up</h3>
+            <h3 style={{ textAlign: "center", marginTop: "10px" }}>Sign Up</h3>
             <div className="form-group">
               <label>
                 <b>First name</b>
               </label>
               <input
-              name="firstName"
+                name="firstName"
                 type="text"
                 className="form-control"
                 placeholder="First name"
@@ -46,7 +69,7 @@ const SignUp = () => {
                 <b>Last name</b>
               </label>
               <input
-              name="lastName"
+                name="lastName"
                 type="text"
                 className="form-control"
                 placeholder="Last name"
@@ -59,7 +82,7 @@ const SignUp = () => {
                 <b>Email address </b>
               </label>
               <input
-              name="email"
+                name="email"
                 type="email"
                 className="form-control"
                 placeholder="Enter email"
@@ -73,7 +96,7 @@ const SignUp = () => {
                 <b>Password</b>
               </label>
               <input
-              name="password"
+                name="password"
                 type="password"
                 className="form-control"
                 placeholder="Enter password"
@@ -81,7 +104,11 @@ const SignUp = () => {
                 onChange={onChangeInputField}
               />
             </div>
-
+            {errorMessage && (
+              <div className="form-group">
+              <p className="text-danger">{errorMessage}</p>
+            </div>
+            )}
             <button
               style={{ marginTop: "10px" }}
               type="submit"

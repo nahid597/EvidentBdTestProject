@@ -1,19 +1,32 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import AppContext from "../../context/appcontext";
 import "./navbar.scss";
+import {
+  Route,
+  a,
+  HashRouter,
+  Link
+} from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { authenticated, deAuthenticate } = useContext(AppContext);
 
   const onClickToggle = () => {
-      setIsOpen(!isOpen);
+    setIsOpen(!isOpen);
   };
 
   const getStyleOfCollapse = () => {
-    if(isOpen) {
-        return 'show';
+    if (isOpen) {
+      return "show";
     } else {
-        return '';
+      return "";
     }
+  };
+
+  const onClickSignOut = (e) => {
+    e.preventDefault();
+    deAuthenticate();
   };
 
   return (
@@ -38,7 +51,10 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className= {`collapse navbar-collapse ${getStyleOfCollapse()}`} id="navbarNav">
+        <div
+          className={`collapse navbar-collapse ${getStyleOfCollapse()}`}
+          id="navbarNav"
+        >
           <ul className="navbar-nav">
             <li className="nav-item active">
               <a className="nav-link text-primary" href="/">
@@ -56,9 +72,19 @@ const Navbar = () => {
               </a>
             </li>
             <li className="nav-item navbar-item-list-right">
-              <a className="nav-link text-primary" href="/login">
-                Sign in
-              </a>
+              {authenticated ? (
+                <a
+                  className="nav-link text-primary"
+                  onClick={(e) => onClickSignOut(e)}
+                  href="{!#}"
+                >
+                  Sign out
+                  </a>
+              ) : (
+                <a className="nav-link text-primary" href="/login">
+                  Sign in
+                </a>
+              )}
             </li>
           </ul>
         </div>
