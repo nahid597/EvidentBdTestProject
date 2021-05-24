@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import authService from "../../service/authService";
@@ -16,7 +15,7 @@ const SignUp = () => {
     setErrorMessage('');
     setIsRegister(false);
 
-    const {data, error, success} = response;
+    const { error, success} = response;
 
     if(!success) {
       setErrorMessage(error);

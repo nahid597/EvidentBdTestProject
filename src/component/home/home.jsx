@@ -4,7 +4,7 @@ import "./home.scss";
 const Home = () => {
   return (
     <>
-      <h5>list of data</h5>
+      <h5>Home page</h5>
     </>
   );
 };

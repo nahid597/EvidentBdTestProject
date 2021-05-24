@@ -16,7 +16,7 @@ router.post("/", async (req, res) => {
   const { error } = validate(req.body);
 
   if (error) {
-    return res.status(400).send({
+    return res.status(200).send({
       successful: false,
       message: error.details[0].message,
       data: "",

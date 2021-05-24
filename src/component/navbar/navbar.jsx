@@ -1,12 +1,6 @@
 import React, { useContext, useState } from "react";
 import AppContext from "../../context/appcontext";
 import "./navbar.scss";
-import {
-  Route,
-  a,
-  HashRouter,
-  Link
-} from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +21,11 @@ const Navbar = () => {
   const onClickSignOut = (e) => {
     e.preventDefault();
     deAuthenticate();
+    goToLoginPage();
+  };
+
+  const goToLoginPage = () => {
+    window.location.href="/login"
   };
 
   return (

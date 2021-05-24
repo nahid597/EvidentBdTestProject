@@ -9,11 +9,11 @@ import AppProvider from "./context/appprovider";
 
 ReactDOM.render(
   <React.StrictMode>
+  <BrowserRouter>
     <AppProvider>
-      <BrowserRouter>
         <App />
-      </BrowserRouter>
     </AppProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

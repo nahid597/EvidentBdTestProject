@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { Redirect } from "react-router-dom";
 import AppContext from "../../context/appcontext";
 import GLOBAL from "../../global";
 import authService from "../../service/authService";
@@ -9,7 +8,6 @@ const Login = () => {
   const [loginData, setLoginData] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const {
-    authenticated,
     authenticate,
     storeUserInfo,
     storeUserInfoToLocalStorage,
@@ -17,6 +15,7 @@ const Login = () => {
 
   const onSubmitLoginData = async (event) => {
     event.preventDefault();
+
     const response = await authService.login(loginData);
     const { data, error, success } = response;
 
@@ -27,6 +26,10 @@ const Login = () => {
       return;
     }
 
+
+    //setLoggedIn(true);
+    goToDashBoard();
+
     const userInfo =  data;
     GLOBAL.USER_INFO = userInfo;
     authenticate(true);
@@ -34,9 +37,9 @@ const Login = () => {
     storeUserInfoToLocalStorage();
   };
 
-  if (authenticated) {
-    return <Redirect to="/" />;
-  }
+ const goToDashBoard = () => {
+    window.location.href="/"
+  };
 
   const onChangeInputField = (event) => {
     event.preventDefault();
