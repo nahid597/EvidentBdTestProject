@@ -1,6 +1,21 @@
-# Getting Started with Create React App
+# Ami Coding Pari nah
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is Basically test project that was given by evidentBd to test my skill. Basically is't sorting and searching algorithm based proejct. Here user can enter some number and also enter search number if number is availabe in input field then it's return true other return false. When i store input value in database it is sorted data. For searching i am using linear search and for sorting i am using bubble sort.
+
+
+## Techlogies: 
+    Node js
+    Express js
+    MongoDB
+    React js
+    CSS3
+    Bootstrap4
+    HTML5
+    
+## Implementation
+
+ Build for client side i am using react js. React js is a very light weight javascript library to build the UI. TO build client side logic i am using react js.
+ For backend side logic i am using exrpress js. Using express js i created some api that depends on authentication, post data and get data. For authentication i am using jwt. To sotre the data i am using mongodb. All data saved in locally. If any one want to store data in cloud just he/she can change change the url. Then it will be work.
 
 ## Available Scripts
 
@@ -39,21 +54,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
